@@ -37,6 +37,7 @@ class PolylinesController extends Controller
                 'name' => 'required|unique:polylines,name',
                 'description'=> 'required',
                 'geom_polyline' => 'required',
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ],
             [
                 'name.required' => 'Name is required',
@@ -47,19 +48,34 @@ class PolylinesController extends Controller
             ]
         );
 
+         // Create images directory if nor exists
+         if (!is_dir('storage/images')) {
+            mkdir('./storage/images', 0777);
+         }
+
+        // Get Image File
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name_image = time() . "_polyline." . strtolower($image->getClientOriginalExtension());
+            $image->move('storage/images', $name_image);
+          } else {
+            $name_image = null;
+          }
+
         $data = [
             'geom' => $request->geom_polyline,
             'name' => $request->name,
             'description' => $request->description,
+            'image' => $name_image,
         ];
 
         // create data
         if (!$this->polylines->create($data)) {
-            return redirect()->route('map')->with('error', 'Point failed to added');
+            return redirect()->route('map')->with('error', 'Polylines failed to added');
         }
 
         // redirect to map
-        return redirect()->route('map')->with('success', 'Point has been added');
+        return redirect()->route('map')->with('success', 'Polylines has been added');
 
     }
 

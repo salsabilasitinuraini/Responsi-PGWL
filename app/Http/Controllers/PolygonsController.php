@@ -36,6 +36,7 @@ class PolygonsController extends Controller
                 'name' => 'required|unique:polygons,name',
                 'description'=> 'required',
                 'geom_polygon' => 'required',
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ],
             [
                 'name.required' => 'Name is required',
@@ -46,19 +47,34 @@ class PolygonsController extends Controller
             ]
         );
 
+        // Create images directory if nor exists
+        if (!is_dir('storage/images')) {
+            mkdir('./storage/images', 0777);
+         }
+
+        // Get Image File
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name_image = time() . "_polygon." . strtolower($image->getClientOriginalExtension());
+            $image->move('storage/images', $name_image);
+          } else {
+            $name_image = null;
+          }
+
         $data = [
             'geom' => $request->geom_polygon,
             'name' => $request->name,
             'description' => $request->description,
+            'image' => $name_image,
         ];
 
         // create data
         if (!$this->polygons->create($data)) {
-            return redirect()->route('map')->with('error', 'Point failed to added');
+            return redirect()->route('map')->with('error', 'Polygon failed to added');
         }
 
         // redirect to map
-        return redirect()->route('map')->with('success', 'Point has been added');
+        return redirect()->route('map')->with('success', 'Polygon has been added');
 
     }
 
