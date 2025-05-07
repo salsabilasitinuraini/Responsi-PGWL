@@ -14,7 +14,7 @@ class PointsModel extends Model
     {
         // Ambil data dari database
         $points = $this
-            ->select(DB::raw('st_asgeojson(geom) as geom, name, description, created_at, updated_at, image'))
+            ->select(DB::raw('id, st_asgeojson(geom) as geom, name, description, created_at, updated_at, image'))
             ->get();
 
         // Bangun struktur GeoJSON
@@ -28,6 +28,7 @@ class PointsModel extends Model
                 'type' => 'Feature',
                 'geometry' => json_decode($p->geom),
                 'properties' => [
+                    'id' => $p->id,
                     'name' => $p->name,
                     'description' => $p->description,
                     'created_at' => $p->created_at,
