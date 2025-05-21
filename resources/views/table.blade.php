@@ -6,42 +6,25 @@
     <thead>
         <tr>
             <th>No</th>
-            <th>Nama</th>
-            <th>NIM</th>
-            <th>Kelas</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Created At</th>
+            <th>Updated At</th>
         </tr>
     </thead>
     <tbody>
+
+        @foreach ($points as $point)
         <tr>
-            <td>1</td>
-            <td>Bela</td>
-            <td>23/521480/SV/23444</td>
-            <td>B</td>
+            <td>{{ $point->id }}</td>
+            <td>{{ $point->name }}</td>
+            <td>{{ $point->description }}</td>
+            <td><img src="{{ asset('storage/images/' . $point->image) }}" alt="" width="150" title="{{ $point->image }}"></td>
+            <td>{{ $point->created_at }}</td>
+            <td>{{ $point->updated_at }}</td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Salsa</td>
-            <td>23/3555/SV/23444</td>
-            <td>A</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Bila</td>
-            <td>23/521487770/SV/23444</td>
-            <td>B</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Aini</td>
-            <td>23/44444/SV/23444</td>
-            <td>D</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Lala</td>
-            <td>23/44444/SV/23444</td>
-            <td>A</td>
-        </tr>
+        @endforeach
     </tbody>
 </table>
 </div>

@@ -91,7 +91,12 @@ class PolygonsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = [
+            'title' => 'Edit Polygon',
+            'id' => $id,
+        ];
+
+        return view('edit-polygon', $data);
     }
 
     /**
@@ -99,7 +104,58 @@ class PolygonsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //Validation
+        $request->validate(
+            [
+                'name' => 'required|unique:polygons,name,' . $id,
+                'description' => 'required',
+                'geom_polygon' => 'required',
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ],
+            [
+                'name.required' => 'Name is required',
+                'name.unique' => 'Name already exists',
+                'description.required' => 'Description is required',
+                'geom_polygon.required' => 'Location is required',
+            ]
+        );
+
+        // Create images directory if nor exists
+        if (!is_dir('storage/images')) {
+            mkdir('./storage/images', 0777);
+        }
+
+        // Get Old Image File Name
+        $old_image = $this->polygons->find($id)->image;
+
+        // Get Image File
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name_image = time() . "_polygon." . strtolower($image->getClientOriginalExtension());
+            $image->move('storage/images', $name_image);
+
+            //Delete Old Image
+            if ($old_image != null && file_exists('./storage/images/' . $old_image)) {
+                unlink('./storage/images/' . $old_image);
+            }
+        } else {
+            $name_image = $old_image;
+        }
+
+        $data = [
+            'geom' => $request->geom_polygon,
+            'name' => $request->name,
+            'description' => $request->description,
+            'image' => $name_image,
+        ];
+
+        //Update Data
+        if (!$this->polygons->find($id)->update($data)) {
+            return redirect()->route('map')->with('error', 'Polygon failed to update');
+        }
+
+        //Redirect to map
+        return redirect()->route('map')->with('success', 'Polygon has been updated');
     }
 
     /**
