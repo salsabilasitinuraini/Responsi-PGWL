@@ -14,9 +14,24 @@ class PolygonsModel extends Model
     public function geojson_polygons()
     {
         // Ambil data dari database
-        $polygons = $this
-            ->select(DB::raw('id, st_asgeojson(geom) as geom, name, description, image, st_area(geom, true) as area_m2, st_area(geom, true) / 1000000 as area_km2, st_area(geom, true) / 10000 as area_hektar, created_at, updated_at'))
-            ->get();
+        $polygons = DB::table('polygons')
+    ->select(DB::raw('
+        polygons.id,
+        ST_AsGeoJSON(polygons.geom) as geom,
+        polygons.name,
+        polygons.description,
+        polygons.image,
+        ST_Area(polygons.geom, true) as area_m2,
+        ST_Area(polygons.geom, true) / 1000000 as area_km2,
+        ST_Area(polygons.geom, true) / 10000 as area_hektar,
+        polygons.created_at,
+        polygons.updated_at,
+        polygons.user_id,
+        users.name as user_created
+    '))
+    ->leftJoin('users', 'polygons.user_id', '=', 'users.id')
+    ->get();
+
 
         // Bangun struktur GeoJSON
         $geojson = [
@@ -38,6 +53,8 @@ class PolygonsModel extends Model
                     'area_hektar' => $p->area_hektar,
                     'created_at' => $p->created_at,
                     'updated_at' => $p->updated_at,
+                    'user_id' => $p->user_id,
+                    'user_created' => $p->user_created,
                 ],
             ];
 
