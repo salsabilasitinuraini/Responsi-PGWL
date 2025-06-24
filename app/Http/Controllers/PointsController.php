@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PointsModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PointsController extends Controller
 {
@@ -18,11 +19,18 @@ class PointsController extends Controller
      */
     public function index()
     {
-        $data = [
-            'title' => 'Map',
-        ];
+         $points = DB::table('points')
+        ->select(
+            'id',
+            DB::raw('ST_Y(geom) as lat'),
+            DB::raw('ST_X(geom) as lng'),
+            'name' // pastikan kolom ini ada
+        )
+        ->get();
 
-        return view('map', $data);
+    $title = 'Peta Wisata Temanggung'; // Atur judul yang kamu inginkan
+
+    return view('map', compact('points', 'title'));
     }
 
     /**
