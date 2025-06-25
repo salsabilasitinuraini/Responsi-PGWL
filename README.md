@@ -1,3 +1,89 @@
+# 🌐 Jejak Temanggung – WebGIS Wisata Interaktif
+
+Jejak Temanggung adalah platform WebGIS interaktif yang dikembangkan untuk menyajikan informasi destinasi wisata di Kabupaten Temanggung dalam bentuk peta digital. Aplikasi ini memanfaatkan teknologi geospasial berbasis web dan bertujuan untuk memudahkan wisatawan maupun masyarakat umum dalam mengenali, mengeksplorasi, dan mengakses informasi pariwisata secara efisien dan menarik.
+
+Proyek ini dikembangkan sebagai bagian dari **Responsi Praktikum Pemrograman Geospasial Web Lanjut**.
+
+---
+
+## 🎯 Tujuan Pengembangan
+
+- ✅ **Digitalisasi Peta Wisata**: Menyediakan peta interaktif wisata berbasis web.
+- ✅ **Informasi Lengkap & Visual**: Menampilkan deskripsi dan dokumentasi visual untuk setiap titik wisata.
+- ✅ **Aksesibilitas**: Mempermudah publik menjelajah wisata secara online kapan saja dan di mana saja.
+- ✅ **Pendukung Promosi & Perencanaan**: Membantu pemerintah daerah dan pelaku wisata dalam promosi dan monitoring berbasis spasial.
+
+---
+
+## 🧩 Fitur Utama
+
+- 🗺️ **Peta Interaktif**: Menampilkan titik-titik wisata di Kabupaten Temanggung.
+- 📍 **Lokasi Saya**: Menampilkan posisi pengguna saat ini di peta.
+- ➡️ **Navigasi Rute**: Menunjukkan rute tercepat dari lokasi pengguna ke destinasi wisata.
+- ➕ **Input Lokasi Baru**: Pengguna dapat menambahkan lokasi wisata beserta detail dan foto.
+- 📋 **Tabel Data**: Menyediakan data destinasi dalam bentuk tabel interaktif dengan pencarian dan filter.
+- 📊 **Dashboard Statistik**: Menyajikan data kunjungan dan statistik wisata secara visual (grafik & tabel).
+- 📤 **Ekspor Data**: Unduh data ke dalam format CSV atau Excel.
+- 🔗 **API GeoJSON**: Tersedia untuk integrasi data spasial ke aplikasi lain.
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+
+| Komponen      | Teknologi                          |
+|---------------|-------------------------------------|
+| Backend       | Laravel (PHP)                      |
+| Frontend      | HTML, CSS, JavaScript, Leaflet.js  |
+| Database      | PostgreSQL + PostGIS               |
+| Statistik     | Chart.js                           |
+| Tabel Data    | DataTables                         |
+| API Format    | GeoJSON                            |
+
+---
+
+## 🚀 Cara Instalasi & Menjalankan Proyek
+
+> Pastikan kamu sudah menginstall **PHP**, **Composer**, dan **PostgreSQL + PostGIS**
+
+1. **Clone repository**
+   ```bash
+   git clone https://github.com/salsabilasitinuraini/Responsi-PGWL.git
+   cd Responsi-PGWL
+   
+2. **Install dependency Laravel**
+   ```bash
+   composer install
+      
+3. **Copy dan konfigurasi file .env**
+   ```bash
+   cp .env.example .env
+
+4. **Edit file .env untuk koneksi database**
+   ```env
+   DB_CONNECTION=pgsql
+   DB_HOST=127.0.0.1
+   DB_PORT=5432
+   DB_DATABASE=jejak_temanggung
+   DB_USERNAME=postgres
+   DB_PASSWORD=yourpassword
+
+5. **Generate application key**
+   ```bash
+   php artisan key:generate
+
+6. **Migrate database**
+   ```bash
+   php artisan migrate
+
+7. **Jalankan server lokal**
+   ```bash
+   php artisan serve
+
+7. **Akses aplikasi di browser**
+   ```url
+   http://127.0.0.1:8000
+     
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
