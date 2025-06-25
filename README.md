@@ -82,6 +82,40 @@ Proyek ini dikembangkan sebagai bagian dari **Responsi Praktikum Pemrograman Geo
 7. **Akses aplikasi di browser**
    ```url
    http://127.0.0.1:8000
+
+---
+
+## 📱 Tampilan Website
+
+- **Homepage Jejak Temanggung**
+  ![Screenshot 2025-06-25 004945](https://github.com/user-attachments/assets/1eb7ddd9-8523-4873-b3fb-30e4276c0ccf)
+  ![Screenshot 2025-06-25 011330](https://github.com/user-attachments/assets/d6664313-02ba-476b-bfa6-a6a789c89290)
+  ![Screenshot 2025-06-25 011401](https://github.com/user-attachments/assets/1c59c647-5ed4-4b2b-be78-936b4bebdee0)
+  
+- **Halaman Peta Interaktif**
+  ![Screenshot 2025-06-25 011505](https://github.com/user-attachments/assets/511c928f-3854-4b39-a05b-70ff950f04b8)
+  - **Lokasi Saya**
+  ![Screenshot 2025-06-25 072218](https://github.com/user-attachments/assets/9cc9bbba-12b6-4bee-9a27-08f6b9738c3a)
+  - **Rute**
+  ![Screenshot 2025-06-25 072348](https://github.com/user-attachments/assets/19f3b6e9-a322-4f86-905f-167277d57297)
+  ![Screenshot 2025-06-25 072316](https://github.com/user-attachments/assets/ad5107ba-a9ce-4625-b343-fddf169c80c7)
+  
+- **Modal Create Point**
+  ![Screenshot 2025-06-25 072537](https://github.com/user-attachments/assets/308c2aea-4990-4bc2-a549-f852aa65a51e)
+  ![Screenshot 2025-06-25 101109](https://github.com/user-attachments/assets/13fc6009-aa3b-463f-a5ee-f5b7f2a95f65)
+  ![Screenshot 2025-06-25 101120](https://github.com/user-attachments/assets/25c3ef85-2b51-42ce-8d00-74318cbe661e)
+
+- **Pop Up**
+  ![Screenshot 2025-06-25 072432](https://github.com/user-attachments/assets/0105921f-e1ac-4a8f-a558-f0169553be87)
+
+- **Halaman Tabel**
+  ![Screenshot 2025-06-25 074410](https://github.com/user-attachments/assets/dbfb5c57-9287-472a-a382-5150b3a561be)
+
+- **Dashboard Statistik Kunjungan Wisata**
+  ![Screenshot 2025-06-25 074700](https://github.com/user-attachments/assets/8bf685d3-6bb1-4837-95d5-4f240956d15c)
+  ![Screenshot 2025-06-25 074731](https://github.com/user-attachments/assets/fa8ad734-121f-4953-babf-832b26305310)
+
+
      
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
